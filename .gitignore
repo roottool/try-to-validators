@@ -49,3 +49,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Optional stylelint cache
 .stylelintcache
+
+# VS Code
+.vscode/settings.json
