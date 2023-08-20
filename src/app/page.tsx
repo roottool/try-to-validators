@@ -6,10 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export default function Home() {
 	return (
-		<main className="container grid grid-rows-3 grid-cols-1 w-fit min-h-screen">
-			<div className="row-start-2">
+		<main className="container grid grid-rows-3 grid-cols-1 w-fit h-screen">
+			<div className="row-start-2 flex flex-col justify-center ">
 				<Tabs defaultValue="Zod" className="w-[400px]">
-					<TabsList className="grid w-full grid-cols-3">
+					<TabsList className="grid grid-cols-3 w-full">
 						<TabsTrigger value="Zod">Zod</TabsTrigger>
 						<TabsTrigger value="ArkType">ArkType</TabsTrigger>
 						<TabsTrigger value="Valibot">Valibot</TabsTrigger>
