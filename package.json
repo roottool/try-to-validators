@@ -4,6 +4,7 @@
 	"author": {
 		"name": "roottool"
 	},
+	"license": "UNLICENSED",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
