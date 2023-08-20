@@ -1,16 +1,7 @@
 import ArkTypeForm from '@/app/_components/ArkTypeForm'
 import ValibotForm from '@/app/_components/ValibotForm'
 import ZodForm from '@/app/_components/ZodForm'
-import { Button } from '@/components/ui/button'
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export default function Home() {
