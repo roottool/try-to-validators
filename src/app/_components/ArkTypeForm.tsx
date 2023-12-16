@@ -12,13 +12,9 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 
 const schema = type({
-	username: 'string>0',
-	age: '0<=number<200',
-	'email?': [
-		/.*@example.com$/ as Infer<`${string}@example.com`>,
-		'|',
-		'undefined',
-	],
+	username: 'string > 0',
+	age: '0 <= number < 200',
+	'email?': [/.*@example.com$/ as Infer<`${string}@example.com`>, '|', '""'],
 })
 type Schema = typeof schema.infer
 
@@ -31,7 +27,8 @@ export default function ArkTypeForm() {
 		resolver: arktypeResolver(schema),
 		defaultValues: {
 			username: '',
-			email: undefined,
+			age: NaN,
+			email: '',
 		},
 	})
 
