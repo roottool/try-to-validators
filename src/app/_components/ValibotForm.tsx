@@ -43,7 +43,7 @@ export default function ValibotForm() {
 		defaultValues: {
 			username: '',
 			age: NaN,
-			email: undefined,
+			email: '',
 		},
 	})
 

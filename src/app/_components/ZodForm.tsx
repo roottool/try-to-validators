@@ -38,7 +38,7 @@ export default function ZodForm() {
 		defaultValues: {
 			username: '',
 			age: NaN,
-			email: undefined,
+			email: '',
 		},
 	})
 
