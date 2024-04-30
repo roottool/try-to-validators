@@ -1,7 +1,6 @@
 'use client'
 
 import { arktypeResolver } from '@hookform/resolvers/arktype'
-import type { Infer } from 'arktype'
 import { type } from 'arktype'
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
@@ -14,7 +13,7 @@ import { useToast } from '@/components/ui/use-toast'
 const schema = type({
 	username: 'string > 0',
 	age: '0 <= number < 200',
-	'email?': [/.*@example.com$/ as Infer<`${string}@example.com`>, '|', '""'],
+	'email?': 'email&/.*@example.com$/|undefined',
 })
 type Schema = typeof schema.infer
 
@@ -37,7 +36,7 @@ export default function ArkTypeForm() {
 		toast({ variant: 'default', description: 'The form value is valid.' })
 	}
 	const handleInvalidSubmit: SubmitErrorHandler<Schema> = (error) => {
-		console.log(error)
+		console.error(error)
 		toast({ variant: 'destructive', description: 'The form value is invalid.' })
 	}
 
