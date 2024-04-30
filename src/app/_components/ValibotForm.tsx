@@ -16,19 +16,21 @@ import {
 	number,
 	object,
 	optional,
+	setGlobalConfig,
 	string,
 } from 'valibot'
+import '@valibot/i18n/ja'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 
+setGlobalConfig({ lang: 'ja' })
+
 const schema = object({
-	username: string('Your username must be a string.', [
-		minLength(1, 'Please enter your username.'),
-	]),
-	age: number('Your age must be a number.', [minValue(0), maxValue(199)]),
+	username: string([minLength(1)]),
+	age: number([minValue(0), maxValue(199)]),
 	email: optional(string([email(), endsWith('@example.com')])),
 })
 type Schema = ValibotInput<typeof schema>
@@ -89,9 +91,9 @@ export default function ValibotForm() {
 					setValueAs: (value) => (!!value ? value : undefined),
 				})}
 			/>
-			{errors.email && errors.email.type === 'ends_with' ? (
+			{errors.email ? (
 				<p role="alert" className="text-sm text-muted-foreground text-red-600">
-					Only &quot;example.com&quot; domains can be used.
+					{errors.email.message}
 				</p>
 			) : (
 				<p id="email-description" className="text-sm text-muted-foreground">

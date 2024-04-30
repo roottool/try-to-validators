@@ -74,9 +74,9 @@ export default function ArkTypeForm() {
 					setValueAs: (value) => (!!value ? value : undefined),
 				})}
 			/>
-			{errors.email && errors.email.type === 'regex' ? (
+			{errors.email ? (
 				<p role="alert" className="text-sm text-muted-foreground text-red-600">
-					Only &quot;example.com&quot; domains can be used.
+					{errors.email.message}
 				</p>
 			) : (
 				<p id="email-description" className="text-sm text-muted-foreground">
