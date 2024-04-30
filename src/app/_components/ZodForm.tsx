@@ -11,14 +11,8 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 
 const schema = z.object({
-	username: z.string().min(1, { message: 'Please enter your username.' }),
-	age: z
-		.number({
-			required_error: 'Please enter your age.',
-			invalid_type_error: 'Please enter your age.',
-		})
-		.gte(0)
-		.lt(200),
+	username: z.string().min(1),
+	age: z.number().gte(0).lt(200),
 	email: z.optional(
 		z
 			.string()
@@ -84,9 +78,9 @@ export default function ZodForm() {
 					setValueAs: (value) => (!!value ? value : undefined),
 				})}
 			/>
-			{errors.email && errors.email.type === 'invalid_string' ? (
+			{errors.email ? (
 				<p role="alert" className="text-sm text-muted-foreground text-red-600">
-					Only &quot;example.com&quot; domains can be used.
+					{errors.email.message}
 				</p>
 			) : (
 				<p id="email-description" className="text-sm text-muted-foreground">
