@@ -27,7 +27,7 @@ export default function ZodForm() {
 		formState: { errors },
 		handleSubmit,
 		register,
-	} = useForm<Schema>({
+	} = useForm({
 		resolver: zodResolver(schema),
 		defaultValues: {
 			username: '',

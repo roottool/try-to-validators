@@ -6,19 +6,7 @@ import {
 	type SubmitErrorHandler,
 	type SubmitHandler,
 } from 'react-hook-form'
-import type { Input as ValibotInput } from 'valibot'
-import {
-	email,
-	endsWith,
-	maxValue,
-	minLength,
-	minValue,
-	number,
-	object,
-	optional,
-	setGlobalConfig,
-	string,
-} from 'valibot'
+import * as v from 'valibot'
 import '@valibot/i18n/ja'
 
 import { Input } from '@/components/ui/input'
@@ -26,21 +14,21 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 
-setGlobalConfig({ lang: 'ja' })
+v.setGlobalConfig({ lang: 'ja' })
 
-const schema = object({
-	username: string([minLength(1)]),
-	age: number([minValue(0), maxValue(199)]),
-	email: optional(string([email(), endsWith('@example.com')])),
+const schema = v.object({
+	username: v.pipe(v.string(), v.minLength(1)),
+	age: v.pipe(v.number(), v.minValue(0), v.maxValue(199)),
+	email: v.optional(v.pipe(v.string(), v.email(), v.endsWith('@example.com'))),
 })
-type Schema = ValibotInput<typeof schema>
+type Schema = v.InferOutput<typeof schema>
 
 export default function ValibotForm() {
 	const {
 		formState: { errors },
 		handleSubmit,
 		register,
-	} = useForm<Schema>({
+	} = useForm({
 		resolver: valibotResolver(schema),
 		defaultValues: {
 			username: '',
