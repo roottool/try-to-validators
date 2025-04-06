@@ -13,7 +13,7 @@ import { useToast } from '@/components/ui/use-toast'
 const schema = type({
 	username: 'string > 0',
 	age: '0 <= number < 200',
-	'email?': 'email&/.*@example.com$/|undefined',
+	'email?': 'string.email&/.*@example.com$/|undefined',
 })
 type Schema = typeof schema.infer
 
