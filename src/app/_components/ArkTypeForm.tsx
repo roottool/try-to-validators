@@ -27,7 +27,7 @@ export default function ArkTypeForm() {
 		defaultValues: {
 			username: '',
 			age: NaN,
-			email: '',
+			email: undefined,
 		},
 	})
 
