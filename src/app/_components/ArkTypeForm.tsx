@@ -70,7 +70,7 @@ export default function ArkTypeForm() {
 				aria-labelledby="email-label"
 				aria-describedby="email-description"
 				{...register('email', {
-					setValueAs: (value) => (!!value ? value : undefined),
+					setValueAs: (value) => (value ? value : undefined),
 				})}
 			/>
 			{errors.email ? (
